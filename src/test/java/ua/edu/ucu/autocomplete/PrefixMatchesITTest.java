@@ -2,13 +2,15 @@
 package ua.edu.ucu.autocomplete;
 
 import static org.hamcrest.Matchers.containsInAnyOrder;
+
 import org.junit.Test;
+
 import static org.junit.Assert.*;
+
 import org.junit.Before;
 import ua.edu.ucu.tries.RWayTrie;
 
 /**
- *
  * @author Andrii_Rodionov
  */
 public class PrefixMatchesITTest {
@@ -54,13 +56,14 @@ public class PrefixMatchesITTest {
         String[] expResult = {"abc", "abce", "abcde"};
 
         assertThat(result, containsInAnyOrder(expResult));
+        assertEquals(true, pm.delete("alalala"));
+
     }
 
     @Test
     public void tesContains() {
-        String pref = "abc";
-        int k = 3;
         assertEquals(true, pm.contains("abc"));
+        assertEquals(false, pm.contains("aaaaa"));
     }
 
     @Test
