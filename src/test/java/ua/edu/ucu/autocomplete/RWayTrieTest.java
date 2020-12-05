@@ -1,27 +1,20 @@
-package ua.edu.ucu.autocomplete;
-
-import immutable.Queue;
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-
-public class RWayTrieTest {
-
-    @Test
-    public void testQueue() {
-        Queue testQueue = new Queue();
-        for (int i = 1; i < 5; i++) {
-            testQueue.enqueue(i);
-        }
-        for (int i = 1; i < 5; i++) {
-            assertEquals(i, testQueue.dequeue());
-        }
-    }
-
-    @Test(expected = IndexOutOfBoundsException.class)
-    public void testDequeueException() {
-        Queue testQueue = new Queue();
-        testQueue.dequeue();
-    }
-
-}
+//package ua.edu.ucu.autocomplete;
+//
+//import org.junit.Test;
+//
+//import static org.junit.Assert.assertEquals;
+//
+//public class RWayTrieTest {
+//
+//    @Test
+//    public void testQueue() {
+//        assertEquals(i, testQueue.dequeue());
+//
+//    }
+//
+//    @Test(expected = IndexOutOfBoundsException.class)
+//    public void testDequeueException() {
+//
+//    }
+//
+//}

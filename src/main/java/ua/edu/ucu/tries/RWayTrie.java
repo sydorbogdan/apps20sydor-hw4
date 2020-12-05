@@ -66,7 +66,7 @@ public class RWayTrie implements Trie {
             x.val = null;
         } else {
             char c = key.charAt(d);
-            x.next[c] = delete(x.next[c], key, d + 1);
+            x.next[c - shift] = delete(x.next[c - shift], key, d + 1);
         }
         if (x.val != null) {
             return x;
@@ -77,11 +77,6 @@ public class RWayTrie implements Trie {
             }
         }
         return null;
-    }
-
-    @Override
-    public Iterable<String> words() {
-        return wordsWithPrefix("");
     }
 
     @Override
