@@ -55,6 +55,7 @@ public class RWayTrie implements Trie {
     @Override
     public boolean delete(String word) {
         this.root = delete(this.root, word, 0);
+        System.out.println(this.root != null);
         return this.root != null;
     }
 

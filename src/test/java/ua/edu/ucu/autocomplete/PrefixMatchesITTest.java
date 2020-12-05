@@ -49,18 +49,16 @@ public class PrefixMatchesITTest {
     @Test
     public void testDelete() {
         String pref = "abc";
-        int k = 3;
         pm.delete("abcd");
-        Iterable<String> result = pm.wordsWithPrefix(pref, k);
+        Iterable<String> result = pm.wordsWithPrefix(pref);
 
-        String[] expResult = {"abc", "abce", "abcde"};
+        String[] expResult = {"abc", "abce", "abcde", "abcdef"};
 
         assertThat(result, containsInAnyOrder(expResult));
-        assertEquals(true, pm.delete("alalala"));
-        assertEquals(true, pm.delete("a"));
-//        PrefixMatches rm = new PrefixMatches(new RWayTrie());
-//        assertEquals(false, pm.delete("a"));
-
+        assertEquals(true, pm.delete("abc"));
+        assertEquals(true, pm.delete("abce"));
+        assertEquals(true, pm.delete("abcde"));
+        assertEquals(false, pm.delete("abcdef"));
     }
 
     @Test
