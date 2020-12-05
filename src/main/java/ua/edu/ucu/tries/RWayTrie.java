@@ -60,9 +60,6 @@ public class RWayTrie implements Trie {
     }
 
     private Node delete(Node x, String key, int d) {
-        if (x == null) {
-            return null;
-        }
         if (d == key.length()) {
             x.val = null;
         } else {
