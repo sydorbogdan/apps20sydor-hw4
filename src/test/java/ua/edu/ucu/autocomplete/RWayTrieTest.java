@@ -3,9 +3,10 @@ package ua.edu.ucu.autocomplete;
 import immutable.Queue;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-public class QueueTest {
+public class RWayTrieTest {
+
     @Test
     public void testQueue() {
         Queue testQueue = new Queue();

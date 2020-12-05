@@ -5,11 +5,13 @@ import immutable.Queue;
 public class RWayTrie implements Trie {
     private static int R = 26;
     private Node root = new Node();
+    private int shift = 96;
 
     private static class Node {
         private Integer val;
         private Node[] next = new Node[R];
     }
+
 
     @Override
     public void add(Tuple t) {
@@ -17,13 +19,15 @@ public class RWayTrie implements Trie {
     }
 
     private Node put(Node x, String key, int val, int d) {
-        if (x == null) x = new Node();
+        if (x == null) {
+            x = new Node();
+        }
         if (d == key.length()) {
             x.val = val;
             return x;
         }
         char c = key.charAt(d);
-        x.next[c - 96] = put(x.next[c - 96], key, val, d + 1);
+        x.next[c - shift] = put(x.next[c - shift], key, val, d + 1);
         return x;
     }
 
@@ -38,10 +42,14 @@ public class RWayTrie implements Trie {
 
 
     private Node get(Node x, String key, int d) {
-        if (x == null) return null;
-        if (d == key.length()) return x;
+        if (x == null) {
+            return null;
+        }
+        if (d == key.length()) {
+            return x;
+        }
         char c = key.charAt(d);
-        return get(x.next[c - 96], key, d + 1);
+        return get(x.next[c - shift], key, d + 1);
     }
 
     @Override
@@ -64,7 +72,9 @@ public class RWayTrie implements Trie {
             return x;
         }
         for (char c = 0; c < R; c++) {
-            if (x.next[c] != null) return x;
+            if (x.next[c] != null) {
+                return x;
+            }
         }
         return null;
     }
@@ -82,11 +92,14 @@ public class RWayTrie implements Trie {
     }
 
     private void collect(Node x, String pre, Queue<String> q) {
-        if (x == null) return;
-        if (x.val != null) q.enqueue(pre);
-//        System.out.println("collecting: " + pre);
-        for (char c = 96; c < 96 + R; c++) {
-            collect(x.next[c - 96], pre + c, q);
+        if (x == null) {
+            return;
+        }
+        if (x.val != null) {
+            q.enqueue(pre);
+        }
+        for (char c = (char) shift; c < shift + R; c++) {
+            collect(x.next[c - shift], pre + c, q);
             System.out.println((int) c);
         }
     }
@@ -98,13 +111,15 @@ public class RWayTrie implements Trie {
     }
 
     private void collect(Node x, String pre, Queue<String> q, int k) {
-        if (x == null) return;
+        if (x == null) {
+            return;
+        }
         if (x.val != null && x.val <= k) {
             q.enqueue(pre);
-            System.out.println("collecting: " + pre);
         }
-        for (char c = 96; c < 96 + R; c++)
-            collect(x.next[c - 96], pre + c, q, k);
+        for (char c = (char) shift; c < shift + R; c++) {
+            collect(x.next[c - shift], pre + c, q, k);
+        }
     }
 
     @Override
@@ -117,7 +132,9 @@ public class RWayTrie implements Trie {
         if (x == null) {
             return counter;
         }
-        if (x.val != null) counter++;
+        if (x.val != null) {
+            counter++;
+        }
         for (char c = 0; c < R; c++) {
             counter += size(x.next[c]);
         }
