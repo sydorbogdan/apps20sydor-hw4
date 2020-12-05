@@ -3,9 +3,15 @@ package ua.edu.ucu.tries;
 import immutable.Queue;
 
 public class RWayTrie implements Trie {
-    private static int R = 26;
-    private Node root = new Node();
-    private int shift = 96;
+    private static int R;
+    private int shift;
+    private Node root;
+
+    public RWayTrie(int inpR, int inpShift) {
+        R = inpR;
+        shift = inpShift;
+        root = new Node();
+    }
 
     private static class Node {
         private Integer val;

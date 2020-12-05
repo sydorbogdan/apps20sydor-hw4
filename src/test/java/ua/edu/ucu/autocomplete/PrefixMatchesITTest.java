@@ -19,7 +19,7 @@ public class PrefixMatchesITTest {
 
     @Before
     public void init() {
-        pm = new PrefixMatches(new RWayTrie());
+        pm = new PrefixMatches(new RWayTrie(26, 96));
         pm.load("abc", "abce", "abcd", "abcde", "abcdef", "a");
     }
 
