@@ -55,7 +55,6 @@ public class RWayTrie implements Trie {
     @Override
     public boolean delete(String word) {
         this.root = delete(this.root, word, 0);
-        System.out.println(this.root != null);
         return this.root != null;
     }
 
@@ -106,7 +105,7 @@ public class RWayTrie implements Trie {
         if (x == null) {
             return;
         }
-        if (x.val != null && x.val <= k) {
+        if (x.val <= k) {
             q.enqueue(pre);
         }
         for (char c = (char) shift; c < shift + R; c++) {
