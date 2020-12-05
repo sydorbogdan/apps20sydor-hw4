@@ -95,7 +95,6 @@ public class RWayTrie implements Trie {
         }
         for (char c = (char) shift; c < shift + R; c++) {
             collect(x.next[c - shift], pre + c, q);
-            System.out.println((int) c);
         }
     }
 

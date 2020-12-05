@@ -11,10 +11,6 @@ public class PrefixMatches {
 
     private Trie trie;
 
-    public PrefixMatches() {
-        trie = new RWayTrie();
-    }
-
     public PrefixMatches(Trie inpTrie) {
         trie = inpTrie;
     }

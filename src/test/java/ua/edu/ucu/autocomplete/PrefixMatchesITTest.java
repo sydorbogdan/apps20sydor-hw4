@@ -20,7 +20,7 @@ public class PrefixMatchesITTest {
     @Before
     public void init() {
         pm = new PrefixMatches(new RWayTrie());
-        pm.load("abc", "abce", "abcd", "abcde", "abcdef");
+        pm.load("abc", "abce", "abcd", "abcde", "abcdef", "a");
     }
 
     @Test
@@ -57,6 +57,9 @@ public class PrefixMatchesITTest {
 
         assertThat(result, containsInAnyOrder(expResult));
         assertEquals(true, pm.delete("alalala"));
+        assertEquals(true, pm.delete("a"));
+//        PrefixMatches rm = new PrefixMatches(new RWayTrie());
+//        assertEquals(false, pm.delete("a"));
 
     }
 
@@ -64,6 +67,8 @@ public class PrefixMatchesITTest {
     public void tesContains() {
         assertEquals(true, pm.contains("abc"));
         assertEquals(false, pm.contains("aaaaa"));
+        assertEquals(false, pm.contains("a"));
+
     }
 
     @Test
